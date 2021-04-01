@@ -1,0 +1,6 @@
+env/
+venv/
+debug.log
+**/*.exe
+**/*.out
+**/__pycache__/
