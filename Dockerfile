@@ -8,4 +8,5 @@ ADD . /app
 # Install dependencies
 RUN pip install -r requirements.txt
 
+ENTRYPOINT ["./run.sh"]
 CMD ["./run.sh"]
