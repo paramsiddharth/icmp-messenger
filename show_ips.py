@@ -1,3 +1,5 @@
+# Lists host IP addresses on all interfaces
+
 import socket
 
 data = socket.gethostbyname_ex(socket.gethostname())

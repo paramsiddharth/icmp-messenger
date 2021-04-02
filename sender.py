@@ -1,3 +1,5 @@
+# Sends ICMP Echo Requests with custom payload to the desired host
+
 from sys import stderr, exit
 import socket
 import signal

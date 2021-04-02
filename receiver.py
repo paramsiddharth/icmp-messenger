@@ -1,3 +1,5 @@
+# Receives ICMP Echo Requests with custom payload
+
 from pprint import pp
 import socket
 import signal
