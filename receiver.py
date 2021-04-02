@@ -1,15 +1,21 @@
 from pprint import pp
 import socket
+import signal
+from os import name as osname
 
 MAX_ICMP_PACKET_SIZE = 1508
 
-messages = {}
+signal.signal(signal.SIGINT, lambda *args: (
+	print('Exiting...'),
+	exit(0)
+))
 
-# socket.gethostbyname_ex(socket.gethostname()) -> (Machine name, [?], [IP Addresses corresponding to machine])
+messages = {}
 
 try:
 	with socket.socket(socket.AF_INET, socket.SOCK_RAW, socket.IPPROTO_ICMP) as s:
 		s.setsockopt(socket.SOL_IP, socket.IP_HDRINCL, 1)
+		s.bind((socket.gethostname(), 0)) if osname == 'nt' else None
 
 		print('Listening for messages.')
 

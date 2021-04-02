@@ -1,0 +1,11 @@
+.git
+research/
+env/
+venv/
+*env/
+debug.log
+**/*.exe
+**/*.out
+**/__pycache__/
+.vscode/
+.editorconfig

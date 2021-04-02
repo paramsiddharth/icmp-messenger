@@ -1,9 +1,15 @@
-from sys import stderr
+from sys import stderr, exit
 import socket
+import signal
 from pythonping import ping
 
 MAX_ICMP_PACKET_SIZE = 1508
 PAYLOAD_SIZE = MAX_ICMP_PACKET_SIZE // 3
+
+signal.signal(signal.SIGINT, lambda *args: (
+	print('Exiting...'),
+	exit(0)
+))
 
 address = input('IP Address: ')
 
@@ -21,5 +27,5 @@ try:
 			else:
 				ping(address, count=1, size=PAYLOAD_SIZE, payload=msg[:PAYLOAD_SIZE].encode())
 			msg = msg[PAYLOAD_SIZE:]
-except KeyboardInterrupt:
+except (KeyboardInterrupt, EOFError) as e:
 	print('Exiting...')
