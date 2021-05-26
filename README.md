@@ -9,12 +9,12 @@ An application to send and receive messages in the form of ICMP echo request pay
 	```
 2.	Create a receiver.
 	``` bash
-	docker run --rm -it --network mynet --name myname paramsiddharth/icmp-messenger receiver
+	docker run --rm -it --network mynet --name my-receiver paramsiddharth/icmp-messenger receiver
 	```
 	Note the IP address of the receiver.
 3.	Start up a sender.
 	``` bash
-	docker run --rm -it --network mynet --name myname paramsiddharth/icmp-messenger sender
+	docker run --rm -it --network mynet --name my-sender paramsiddharth/icmp-messenger sender
 	```
 	Enter the address of the receiver and send messages. The messages will appear in the receiver's console.
 
@@ -52,7 +52,7 @@ docker network create mynetwork
 
 Start an attached container in that network.
 ``` bash
-docker run --rm -it --network mynet --name myname paramsiddharth/icmp-messenger # You may optionally pass command-line arguments "sender" or "receiver"
+docker run --rm -it --network mynet --name my-app paramsiddharth/icmp-messenger # You may optionally pass command-line arguments "sender" or "receiver"
 ```
 
 It will be able to communicate with the other containers in the same network.
